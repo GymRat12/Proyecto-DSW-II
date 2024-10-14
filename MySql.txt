@@ -1,0 +1,61 @@
+mySql
+*****************
+Procedimientos almacenados:
+--------------------------------------------------------------
+Listar muebles:
+CREATE DEFINER=`cibertec`@`localhost` PROCEDURE `listar_clientes`()
+BEGIN
+select*from cliente;
+END
+
+call listar_muebles;
+----------------------------------------------------------------
+Insertar Muebles:
+CREATE DEFINER=`cibertec`@`localhost` PROCEDURE `insertar_muebles`(
+in munombre varchar(100), 
+in muprecio int,
+in mufecha_registro varchar(50)
+)
+BEGIN
+insert into muebles (idMuebles,nombre,precio,fecha_registro) values (null,munombre,muprecio,mufecha_registro);
+END
+
+call insertar_muebles('Mesa de madera',150,'05-04-2024');
+
+--------------------------------------------------------------
+Listar Muebles por id:
+
+CREATE PROCEDURE `listar_por_id` (
+in muid int
+)
+BEGIN
+select * from muebles where idMuebles = muid;
+END
+
+call listar_por_id(1);
+--------------------------------------------------------
+Actualizar:
+
+CREATE DEFINER=`cibertec`@`localhost` PROCEDURE `actualizar_muebles`(
+in muid int,
+in munombre varchar(100), 
+in muprecio int,
+in mufecha_registro varchar(50)
+)
+BEGIN
+update muebles set nombre = munombre, precio = muprecio, fecha_registro = mufecha_registro where idMuebles = muid;
+END
+
+call actualizar_muebles(1,'Mesa de vidrio','300','20-08-2024');
+
+-------------------------------------------------------------
+Eliminar:
+
+CREATE PROCEDURE `eliminar_mueble` (
+in muid int
+)
+BEGIN
+delete from muebles where idMueble = muid;
+END
+
+call eliminar_mueble(1);
