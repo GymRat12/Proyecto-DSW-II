@@ -1,7 +1,5 @@
 package com.cibertec.model;
 
-import java.sql.Date;
-
 public class Muebles {
 
 	private int id;

@@ -84,7 +84,7 @@ public class MuebleDaoImpl implements MuebleDao {
 		Muebles muebles = null;
 		
 		try {
-			CallableStatement cs = cn.prepareCall("{call listar_cliente_id(?)}");
+			CallableStatement cs = cn.prepareCall("{call listar_por_id(?)}");
 			cs.setInt(1, id);
 			ResultSet rs = cs.executeQuery();
 			if(rs.next()) {
@@ -164,3 +164,24 @@ public class MuebleDaoImpl implements MuebleDao {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

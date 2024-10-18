@@ -1,6 +1,6 @@
 package com.cibertec.service.impl;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.cibertec.dao.MuebleDao;
@@ -14,6 +14,13 @@ public class MuebleServiceImpl implements MuebleService {
 	
 	@Override
 	public String insertarMueble(Muebles mueble) {
+		
+		
+		String currentDate = LocalDate.now().toString();
+		
+		mueble.setFecha_registro(currentDate);
+		
+		
 		return dao.insertarMueble(mueble);
 	}
 
@@ -28,9 +35,13 @@ public class MuebleServiceImpl implements MuebleService {
 	}
 
 	@Override
-	public String actualizarMuebles(int id, String nombre,int precio, String fecha_registro) {
+	public String actualizarMuebles(int id, String nombre,int precio) {
 		
-		Muebles muebles = new Muebles(id,nombre,precio,fecha_registro);
+		String currentDate = LocalDate.now().toString();
+		
+		Muebles muebles = new Muebles(id,nombre,precio, currentDate);
+		
+		
 		
 		return dao.actualizarMuebles(muebles);
 	}
