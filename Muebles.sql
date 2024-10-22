@@ -5,8 +5,8 @@ USE db_muebles;
 CREATE TABLE muebles (
   idMuebles int NOT NULL AUTO_INCREMENT,
   nombre varchar(100) NOT NULL,
-  precio int NOT NULL,
-  fecha_registro varchar(45) NOT NULL,
+  precio float NOT NULL,
+  fecha_registro date NOT NULL,
   PRIMARY KEY (idMuebles)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -36,7 +36,7 @@ DELIMITER $$
 
 CREATE PROCEDURE insertar_muebles(
 in munombre varchar(100), 
-in muprecio int,
+in muprecio float,
 in mufecha_registro varchar(50)
 )
 BEGIN
@@ -69,7 +69,7 @@ DELIMITER $$
 CREATE  PROCEDURE `actualizar_muebles`(
 in muid int,
 in munombre varchar(100), 
-in muprecio int,
+in muprecio float,
 in mufecha_registro varchar(50)
 )
 BEGIN
