@@ -28,7 +28,7 @@ public class MuebleDaoImpl implements MuebleDao {
 		try {
 			CallableStatement cs = cn.prepareCall("{call insertar_muebles(?,?,?)}");
 			cs.setString(1, mueble.getNombre());
-			cs.setInt(2, mueble.getPrecio());
+			cs.setDouble(2, mueble.getPrecio());
 			cs.setString(3, mueble.getFecha_registro());
 			
 			
@@ -62,7 +62,7 @@ public class MuebleDaoImpl implements MuebleDao {
 				Muebles mueble = new Muebles();
 				mueble.setId(rs.getInt(1));
 				mueble.setNombre(rs.getString(2));
-				mueble.setPrecio(rs.getInt(3));
+				mueble.setPrecio(rs.getDouble(3));
 				mueble.setFecha_registro(rs.getString(4));
 				
 				lista.add(mueble);
@@ -81,17 +81,17 @@ public class MuebleDaoImpl implements MuebleDao {
 	@Override
 	public Muebles listarMueblesPorId(int id) {
 		Connection cn = conectar.getConnection();
-		Muebles muebles = null;
+		Muebles mueble = null;
 		
 		try {
 			CallableStatement cs = cn.prepareCall("{call listar_por_id(?)}");
 			cs.setInt(1, id);
 			ResultSet rs = cs.executeQuery();
 			if(rs.next()) {
-				Muebles mueble = new Muebles();
+				mueble = new Muebles();
 				mueble.setId(rs.getInt(1));
 				mueble.setNombre(rs.getString(2));
-				mueble.setPrecio(rs.getInt(3));
+				mueble.setPrecio(rs.getDouble(3));
 				mueble.setFecha_registro(rs.getString(4));
 				
 			}
@@ -101,7 +101,7 @@ public class MuebleDaoImpl implements MuebleDao {
 		} catch (Exception e) {
 		     e.printStackTrace();	
 		}
-		return muebles;
+		return mueble;
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class MuebleDaoImpl implements MuebleDao {
 			CallableStatement cs = cn.prepareCall("{call actualizar_muebles(?,?,?,?)}");
 			cs.setInt(1, muebles.getId());
 			cs.setString(2, muebles.getNombre());
-			cs.setInt(3, muebles.getPrecio());
+			cs.setDouble(3, muebles.getPrecio());
 			cs.setString(4, muebles.getFecha_registro());
 		    
 		    

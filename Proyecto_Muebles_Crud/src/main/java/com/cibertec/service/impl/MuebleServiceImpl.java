@@ -13,12 +13,12 @@ public class MuebleServiceImpl implements MuebleService {
 	MuebleDao dao = new MuebleDaoImpl();
 	
 	@Override
-	public String insertarMueble(Muebles mueble) {
+	public String insertarMueble(String nombre, double precio) {
 		
 		
 		String currentDate = LocalDate.now().toString();
 		
-		mueble.setFecha_registro(currentDate);
+		Muebles mueble = new Muebles(nombre, precio, currentDate);
 		
 		
 		return dao.insertarMueble(mueble);
@@ -35,7 +35,7 @@ public class MuebleServiceImpl implements MuebleService {
 	}
 
 	@Override
-	public String actualizarMuebles(int id, String nombre,int precio) {
+	public String actualizarMuebles(int id, String nombre,double precio) {
 		
 		String currentDate = LocalDate.now().toString();
 		

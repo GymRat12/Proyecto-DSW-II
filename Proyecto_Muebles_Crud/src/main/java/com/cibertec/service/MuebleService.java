@@ -7,10 +7,10 @@ import com.cibertec.model.Muebles;
 
 public interface MuebleService {
 	
-	public String insertarMueble(Muebles muebles);
+	public String insertarMueble(String nombre, double precio);
 	public List<Muebles> listarMuebles();
 	public Muebles listarMueblesPorId(int id);
-	public String actualizarMuebles(int id, String nombre,int precio);
+	public String actualizarMuebles(int id, String nombre,double precio);
 	public String eliminarMueble(int id);
 
 }
